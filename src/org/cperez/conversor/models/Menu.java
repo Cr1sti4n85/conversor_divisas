@@ -26,22 +26,24 @@ public class Menu {
                 """);
         
         try {
-            System.out.println("Elija la divisa de origen: ");
+        System.out.println("Elija la divisa de origen: ");
         int inputOrigen = sc.nextInt();
+        String divisaOrigen =  Divisa.buscarDivisa(inputOrigen);
         System.out.println("Elija la divisa de destino: ");
         int inputDestino = sc.nextInt();
+        String divisaDestino = Divisa.buscarDivisa(inputDestino);
+        
         System.out.println("Ahora indica la cantidad que deseas convertir: ");
-
         double cantidadOrigen = sc.nextDouble();
 
-        String[] divisasAConvertir = Divisa.buscarDivisa(inputOrigen, inputDestino);
         url = String.format("https://v6.exchangerate-api.com/v6/YOUR-API-KEY/pair/%s/%s/%.2f",
-         divisasAConvertir[0], divisasAConvertir[1], cantidadOrigen);
-        System.out.println(url);
+         divisaOrigen, divisaDestino, cantidadOrigen);
+
         sc.close();
         } catch (InputMismatchException e) {
-            // TODO: handle exception
-            System.out.println("ARgumento malo" + e);
+            System.out.println("Los valores ingresados deben ser númericos");
+        } catch (Exception e){
+            System.out.println(e.getMessage());
         }
         
     }

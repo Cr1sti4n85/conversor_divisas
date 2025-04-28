@@ -28,5 +28,47 @@ public enum Divisa {
         }
         return parDeDivisas;
     }
+
+    public static String buscarDivisa(int valor){
+
+        String divisa = "";
+        switch (valor) {
+            case 1: 
+            divisa = Divisa.USD.name();
+            break;
+            case 2: 
+            divisa = Divisa.CAD.name();
+            break;
+            case 3: 
+            divisa = Divisa.CLP.name();
+            break;
+            case 4: 
+            divisa = Divisa.ARS.name();
+            break;
+            case 5: 
+            divisa = Divisa.BRL.name();
+            break;
+            case 6: 
+            divisa = Divisa.COP.name();
+            break;
+            case 7: 
+            divisa = Divisa.EUR.name();
+            break;
+            case 8: 
+            divisa = Divisa.PEN.name();
+            break;
+            case 9: 
+            divisa = Divisa.MXN.name();
+            break;
+            case 10: 
+            divisa = Divisa.GBP.name();
+            break;
+            default:
+                throw new RuntimeException("Valor ingresado incorrecto");
+                
+        }
+
+        return divisa;
+    }
     
 }
