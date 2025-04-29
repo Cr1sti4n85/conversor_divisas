@@ -5,6 +5,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import org.cperez.conversor.services.ClienteHttp;
+import org.cperez.conversor.services.ConvertidorJson;
 
 public class Menu {
 
@@ -29,42 +30,61 @@ public class Menu {
                     """);
 
             try {
+
+                // input de datos requeridos
                 System.out.println("Elija la divisa de origen: ");
                 int inputOrigen = sc.nextInt();
                 String divisaOrigen = Divisa.buscarDivisa(inputOrigen);
                 System.out.println("Elija la divisa de destino: ");
                 int inputDestino = sc.nextInt();
                 String divisaDestino = Divisa.buscarDivisa(inputDestino);
-
                 System.out.println("Ahora indica la cantidad que deseas convertir: ");
                 double cantidadOrigen = sc.nextDouble();
 
+                // peticion a api
                 ClienteHttp clienteHttp = new ClienteHttp(divisaOrigen, divisaDestino, cantidadOrigen);
                 String respuesta = clienteHttp.getRequest();
-                System.out.print("""
-                        REALIZAR NUEVA CONSULTA -> PRESIONA 1 Y ENTER
-                        FINALIZAR PROGRAMA -> PRESIONA ENTER
-                        """);
-                sc.nextLine();
-                opcion = sc.nextLine();
 
-                if (!opcion.equals("1")) {
-                    sc.close();
-                }
+                // Convertir json a record
+                ConversionRecord conversion = ConvertidorJson.convertirDeJson(respuesta);
+                conversion.mostrarResultado();
 
             } catch (InputMismatchException e) {
-                System.out.println("Los valores ingresados deben ser númericos");
+                System.out.println("#################################\n");
+                System.out.println("La opción ingresada no es válida");
+                System.out.println("#################################\n");
 
             } catch (IOException e) {
+                System.out.println("#################################\n");
                 System.out.println(e.getMessage());
+                System.out.println("#################################\n");
+
+            } catch (InterruptedException e) {
+                System.out.println("#################################\n");
+                System.out.println(e.getMessage());
+                System.out.println("#################################\n");
+
+            } catch (Exception e) {
+                System.out.println("#################################\n");
+                System.out.println(e.getMessage());
+                System.out.println("#################################\n");
+
             }
 
-            catch (InterruptedException e) {
-                System.out.println(e.getMessage());
-            }
+            System.out.print("""
+                    ##############################################
+                    REALIZAR NUEVA CONSULTA -> PRESIONA 1 Y ENTER
 
-            catch (Exception e) {
-                System.out.println(e.getMessage());
+                    FINALIZAR PROGRAMA -> PRESIONA ENTER
+                    ##############################################
+
+                    """);
+
+            sc.nextLine();
+            opcion = sc.nextLine();
+
+            if (!opcion.equals("1")) {
+                sc.close();
             }
 
         }
