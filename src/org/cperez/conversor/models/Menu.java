@@ -16,6 +16,10 @@ public class Menu {
         while (opcion.equals("1")) {
             System.out.println("""
                         #################################
+                        
+                        Bienvenidos a la aplicación de conversión de divisas
+                        
+                        #################################
 
                         1 -> Dólar americano (USD)
                         2 -> Dólar canadiense (CAD)
