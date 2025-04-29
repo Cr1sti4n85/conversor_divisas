@@ -1,4 +1,6 @@
-  <p align="center">Aplicación de consola hecha con Java, la biblioteca <a href="https://github.com/google/gson" target="_blank">GSON</a> y la API  <a href="https://www.exchangerate-api.com/" target="_blank">ExchangeRate-API.</a> </p>
+# CONVERSOR DE DIVISAS
+
+<p align="center">Aplicación de consola hecha con Java, la biblioteca <a href="https://github.com/google/gson" target="_blank">GSON</a> y la API  <a href="https://www.exchangerate-api.com/" target="_blank">ExchangeRate-API.</a> </p>
 
 ## Descripción
 
@@ -24,7 +26,7 @@ $ git clone https://github.com/Cr1sti4n85/conversor_divisas.git
 
 7. Busca el archivo _config.properties_ dentro del directorio _conversor_ y reemplaza el texto _TU_API_KEY_ con tu propia clave de la API:
 
-![[./imgs/api_key.png]]
+![API Key](./imgs/api_key.png)
 
 8. Ejecuta la aplicación por medio de la clase **Main**.
 
@@ -47,14 +49,7 @@ $ javac -cp "lib/gson-<version_gson>.jar" -d dist src/org/cperez/conversor/*.jav
 
 4. Copia el archivo _config.properties_ (con el valor de la API*KEY incluida) dentro del directorio con los archivos compilados. Debe quedar dentro del directorio \_conversor*.
 
-   dist/
-   └── org/
-   └── cperez/
-   └── conversor/
-   ├── Main.class
-   ├── models/
-   ├── services/
-   └── config.properties (El archivo debe estar en esta ubicación)
+![Ubicacion de config.properties](./imgs/directorios.png)
 
 5. Posicionado en el directorio raíz (_desafio_conversor_divisas_), ejecute el siguiente comando para iniciar la aplicación por consola. Reemplaza _dist_ por el nombre de tu directorio de compilación y _lib/gson-<version_gson>.jar_ por el nombre del directorio donde se almacena tu biblioteca GSON.
 
@@ -74,4 +69,4 @@ $ java -cp "dist:lib/gson-<version_gson>.jar" org.cperez.conversor.Main
 
 ## Imagen de la aplicación
 
-![[./imgs/app_running.png]]
+![App running](./imgs/app_running.png)
