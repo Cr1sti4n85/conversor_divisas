@@ -57,18 +57,14 @@ public class Menu {
                 System.out.println("La opción ingresada no es válida");
                 System.out.println("#################################\n");
 
-            } catch (IOException e) {
-                System.out.println("#################################\n");
-                System.out.println(e.getMessage());
-                System.out.println("#################################\n");
-
-            } catch (InterruptedException e) {
+            } catch (IOException | InterruptedException e) {
                 System.out.println("#################################\n");
                 System.out.println(e.getMessage());
                 System.out.println("#################################\n");
 
             } catch (Exception e) {
                 System.out.println("#################################\n");
+                System.out.println("Hubo un problema: ");
                 System.out.println(e.getMessage());
                 System.out.println("#################################\n");
 

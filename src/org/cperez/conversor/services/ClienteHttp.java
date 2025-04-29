@@ -5,6 +5,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.Locale;
 
 import org.cperez.conversor.ConfigLoader;
 
@@ -20,7 +21,7 @@ public class ClienteHttp {
         // obtencion de API_KEY desde archivo de configuración de variables de entorno
         API_KEY = ConfigLoader.get("API_KEY");
 
-        url = String.format("https://v6.exchangerate-api.com/v6/%s/pair/%s/%s/%.2f",
+        url = String.format(Locale.US,"https://v6.exchangerate-api.com/v6/%s/pair/%s/%s/%.2f",
                 API_KEY, origen, destino, cantidad);
         this.cliente = HttpClient.newHttpClient();
         this.peticion = HttpRequest.newBuilder().uri(URI.create(this.url)).build();
