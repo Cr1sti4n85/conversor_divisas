@@ -11,13 +11,20 @@ public record ConversionRecord(
     // private double tasaConversion;
     // private double resultadoConversion;
 
-    public void mostrarResultado() {
+    public void mostrarResultado(double base) {
         System.out.println("//////////////////////////////////////////////////////////////////");
         System.out.println("""
-                La conversión de %s hacia %s, usando la converisión actual de %.4f, es de %.2f
 
-                """.formatted(base_code(), target_code(), conversion_rate(), conversion_result()));
-        System.out.println("//////////////////////////////////////////////////////////////////");
+                La conversión de %s %.2f hacia %s, usando la conversión actual de %.4f, es de %s %.2f
+
+                """.formatted(
+                base_code(),
+                base,
+                target_code(),
+                conversion_rate(),
+                target_code(),
+                conversion_result()));
+        System.out.println("//////////////////////////////////////////////////////////////////\n");
 
     }
 

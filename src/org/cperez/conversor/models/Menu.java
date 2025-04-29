@@ -14,8 +14,9 @@ public class Menu {
         String opcion = "1";
 
         while (opcion.equals("1")) {
-            System.out.println("#################################");
             System.out.println("""
+                        #################################
+
                         1 -> Dólar americano (USD)
                         2 -> Dólar canadiense (CAD)
                         3 -> Peso chileno (CLP)
@@ -27,18 +28,20 @@ public class Menu {
                         9 -> Peso mexicano (MXN)
                         10 -> Libra esterlina (GBP)
 
+                        #################################
+
                     """);
 
             try {
 
                 // input de datos requeridos
-                System.out.println("Elija la divisa de origen: ");
+                System.out.print("Elija la divisa de origen: ");
                 int inputOrigen = sc.nextInt();
                 String divisaOrigen = Divisa.buscarDivisa(inputOrigen);
-                System.out.println("Elija la divisa de destino: ");
+                System.out.print("Elija la divisa de destino: ");
                 int inputDestino = sc.nextInt();
                 String divisaDestino = Divisa.buscarDivisa(inputDestino);
-                System.out.println("Ahora indica la cantidad que deseas convertir: ");
+                System.out.print("Ahora indica la cantidad que deseas convertir: ");
                 double cantidadOrigen = sc.nextDouble();
 
                 // peticion a api
@@ -47,7 +50,7 @@ public class Menu {
 
                 // Convertir json a record
                 ConversionRecord conversion = ConvertidorJson.convertirDeJson(respuesta);
-                conversion.mostrarResultado();
+                conversion.mostrarResultado(cantidadOrigen);
 
             } catch (InputMismatchException e) {
                 System.out.println("#################################\n");
